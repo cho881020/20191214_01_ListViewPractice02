@@ -26,7 +26,14 @@ class MainActivity : BaseActivity() {
     override fun setupEvents() {
 
         gameListView.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(mContext, "${position}번 줄 클릭", Toast.LENGTH_SHORT).show()
+
+            val clickedGameData = gameList.get(position)
+            Toast.makeText(mContext, "${clickedGameData.title} 클릭", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(mContext, GameDetailActivity::class.java)
+            intent.putExtra("gameData", clickedGameData)
+            startActivity(intent)
+
         }
 
     }
