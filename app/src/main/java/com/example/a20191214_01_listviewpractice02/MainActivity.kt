@@ -5,10 +5,13 @@ package com.example.a20191214_01_listviewpractice02
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.a20191214_01_listviewpractice02.adapters.GameAdapter
 import com.example.a20191214_01_listviewpractice02.datas.GameData
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
+    var gameAdapter:GameAdapter? = null
     val gameList = ArrayList<GameData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +28,10 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
         addGames()
+
+        gameAdapter = GameAdapter(mContext, R.layout.game_list_item, gameList)
+        gameListView.adapter = gameAdapter
+
     }
 
     fun addGames() {
