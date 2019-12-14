@@ -20,7 +20,10 @@ class BookAdapter(context:Context, resId:Int, list:ArrayList<BookData>)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
 
-        if (tempRow == null) {
+        tempRow?.let {
+            // tempRow가 null이 아닐때
+        }.let {
+            // tempRow가 null일때
             tempRow = inf.inflate(R.layout.book_list_item, null)
         }
 
